@@ -1,25 +1,67 @@
-// ===== OPEN LETTER =====
+// ===============================
+// PREMIUM APOLOGY WEBSITE
+// VERSION 2.0
+// ===============================
 
-const button = document.getElementById("openLetter");
-const letter = document.getElementById("letter");
+// LOADER
 
-button.addEventListener("click",()=>{
+window.addEventListener("load",()=>{
 
-letter.classList.remove("hidden");
+const loader=document.getElementById("loader");
 
-letter.scrollIntoView({
-behavior:"smooth"
+setTimeout(()=>{
+
+loader.style.opacity="0";
+
+loader.style.pointerEvents="none";
+
+setTimeout(()=>{
+
+loader.remove();
+
+},1500);
+
+},2500);
+
 });
 
+// MUSIC
+
+const music=document.getElementById("bgMusic");
+
+const musicButton=document.getElementById("musicButton");
+
+let playing=false;
+
+musicButton.addEventListener("click",()=>{
+
+if(!playing){
+
+music.play();
+
+musicButton.innerHTML="⏸";
+
+playing=true;
+
+}else{
+
+music.pause();
+
+musicButton.innerHTML="🎵";
+
+playing=false;
+
+}
+
 });
 
-// ===== STARS =====
+// STARS
 
-const stars = document.getElementById("stars");
+const stars=document.getElementById("stars");
 
-for(let i=0;i<250;i++){
+for(let i=0;i<400;i++){
 
-const star=document.createElement("div");
+const star=document.createElement("span");
 
 star.className="star";
 
@@ -27,129 +69,310 @@ star.style.left=Math.random()*100+"vw";
 
 star.style.top=Math.random()*100+"vh";
 
+const size=Math.random()*3+1;
+
+star.style.width=size+"px";
+
+star.style.height=size+"px";
+
 star.style.animationDelay=Math.random()*5+"s";
-
-star.style.opacity=Math.random();
-
-star.style.width=(Math.random()*3+1)+"px";
-
-star.style.height=star.style.width;
 
 stars.appendChild(star);
 
 }
 
-// ===== FLOATING HEARTS =====
+// BUTTON
 
-function createHeart(){
+const begin=document.getElementById("begin");
 
-const heart=document.createElement("div");
+const envelopeSection=document.getElementById("envelopeSection");
 
-heart.className="heart";
+begin.addEventListener("click",()=>{
 
-const hearts=["❤️","🤍","🌹","✨"];
+envelopeSection.scrollIntoView({
 
-heart.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
+behavior:"smooth"
 
-heart.style.left=Math.random()*100+"vw";
+});
 
-heart.style.fontSize=(Math.random()*20+15)+"px";
+});
 
-heart.style.animationDuration=(Math.random()*4+6)+"s";
+// ENVELOPE
 
-document.body.appendChild(heart);
+const envelope=document.getElementById("envelope");
+
+const letter=document.getElementById("letterSection");
+
+let opened=false;
+
+envelope.addEventListener("click",()=>{
+
+if(opened) return;
+
+opened=true;
+
+envelope.classList.add("open");
 
 setTimeout(()=>{
 
-heart.remove();
+letter.scrollIntoView({
 
-},10000);
+behavior:"smooth"
+
+});
+
+typeLetter();
+
+},1800);
+
+});
+
+// LETTER
+
+const message=`
+
+Dear Nikita,
+
+I don't know if you'll read every word.
+
+Maybe this changes nothing.
+
+Maybe it changes everything.
+
+But I wanted my apology to be more than just another text.
+
+Looking back...
+
+I realise that there were moments
+
+when I should have listened.
+
+Moments
+
+when I should have understood you better.
+
+Instead...
+
+I reacted.
+
+I wasn't trying to win.
+
+I was trying
+
+to protect
+
+what I believed
+
+was our love.
+
+For every tear,
+
+every disappointment,
+
+every moment
+
+where I made you feel unheard...
+
+I'm truly sorry.
+
+Thank you
+
+for every smile,
+
+every laugh,
+
+every hug,
+
+every memory.
+
+No matter where life takes us,
+
+those memories
+
+will always stay
+
+close to my heart.
+
+I'm not writing this
+
+to change your decision.
+
+I'm writing this
+
+because
+
+you deserved
+
+a genuine apology.
+
+Take care of yourself.
+
+Always.
+
+❤️
+
+Saurabh
+
+`;
+
+const typing=document.querySelector(".typing");
+
+let index=0;
+
+function typeLetter(){
+
+typing.innerHTML="";
+
+function write(){
+
+if(index<message.length){
+
+typing.innerHTML+=message.charAt(index);
+
+index++;
+
+setTimeout(write,35);
 
 }
 
-setInterval(createHeart,350);
+}
 
-// ===== SHOOTING STARS =====
+write();
+
+}
+
+// HEARTBEAT
+
+setInterval(()=>{
+
+const title=document.querySelector(".hero h1");
+
+title.style.transform="scale(1.03)";
+
+setTimeout(()=>{
+
+title.style.transform="scale(1)";
+
+},250);
+
+},2200);
+
+// PARALLAX
+
+window.addEventListener("mousemove",(e)=>{
+
+const x=e.clientX/window.innerWidth;
+
+const y=e.clientY/window.innerHeight;
+
+document.getElementById("galaxy").style.transform=
+
+`translate(${x*15}px,${y*15}px) scale(1.08)`;
+
+});
+
+// FADE
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+
+entry.target.style.transform="translateY(0px)";
+
+}
+
+});
+
+});
+
+document.querySelectorAll("section").forEach(sec=>{
+
+sec.style.opacity="0";
+
+sec.style.transform="translateY(60px)";
+
+sec.style.transition="1.3s";
+
+observer.observe(sec);
+
+});
+/* ==========================
+ROSE PETALS
+========================== */
+
+function createPetal(){
+
+const petal=document.createElement("div");
+
+petal.className="petal";
+
+petal.innerHTML="🌹";
+
+petal.style.left=Math.random()*100+"vw";
+
+petal.style.fontSize=(18+Math.random()*20)+"px";
+
+petal.style.animationDuration=(6+Math.random()*5)+"s";
+
+document.body.appendChild(petal);
+
+setTimeout(()=>{
+
+petal.remove();
+
+},12000);
+
+}
+
+setInterval(createPetal,700);
+
+
+/* ==========================
+SHOOTING STARS
+========================== */
 
 function shootingStar(){
 
 const star=document.createElement("div");
 
-star.style.position="fixed";
+star.className="shooting";
 
-star.style.width="2px";
+star.style.left=Math.random()*70+"vw";
 
-star.style.height="120px";
-
-star.style.background="linear-gradient(white,transparent)";
-
-star.style.left=Math.random()*100+"vw";
-
-star.style.top="-100px";
-
-star.style.transform="rotate(35deg)";
-
-star.style.opacity=".8";
-
-star.style.zIndex="999";
-
-star.style.transition="all 1.5s linear";
+star.style.top=Math.random()*30+"vh";
 
 document.body.appendChild(star);
 
 setTimeout(()=>{
 
-star.style.top="120vh";
-
-star.style.left=(parseFloat(star.style.left)+20)+"vw";
-
-},100);
-
-setTimeout(()=>{
-
 star.remove();
 
-},1800);
+},1500);
 
 }
 
 setInterval(shootingStar,5000);
 
-// ===== CURSOR GLOW =====
+
+/* ==========================
+CURSOR GLOW
+========================== */
 
 document.addEventListener("mousemove",(e)=>{
 
 const glow=document.createElement("div");
 
-glow.style.position="fixed";
+glow.className="cursorGlow";
 
 glow.style.left=e.clientX+"px";
 
 glow.style.top=e.clientY+"px";
 
-glow.style.width="8px";
-
-glow.style.height="8px";
-
-glow.style.borderRadius="50%";
-
-glow.style.background="#ff5d8f";
-
-glow.style.boxShadow="0 0 20px #ff5d8f";
-
-glow.style.pointerEvents="none";
-
-glow.style.zIndex="9999";
-
 document.body.appendChild(glow);
-
-setTimeout(()=>{
-
-glow.style.opacity="0";
-
-glow.style.transform="scale(3)";
-
-},20);
 
 setTimeout(()=>{
 
@@ -158,96 +381,3 @@ glow.remove();
 },500);
 
 });
-
-// ===== TITLE FADE =====
-
-window.addEventListener("scroll",()=>{
-
-const hero=document.querySelector(".hero");
-
-hero.style.opacity=1-window.scrollY/500;
-
-});
-
-// ===== HEARTBEAT =====
-
-setInterval(()=>{
-
-const title=document.querySelector("h1");
-
-title.style.transform="scale(1.03)";
-
-setTimeout(()=>{
-
-title.style.transform="scale(1)";
-
-},300);
-
-},1800);
-
-// ===== TYPEWRITER EFFECT =====
-
-const text="Every heartbeat still whispers your name...";
-
-const small=document.querySelector(".small");
-
-small.innerHTML="";
-
-let i=0;
-
-function typing(){
-
-if(i<text.length){
-
-small.innerHTML+=text.charAt(i);
-
-i++;
-
-setTimeout(typing,70);
-
-}
-
-}
-
-typing();
-/* ========= LOADER ========= */
-
-window.onload=()=>{
-
-setTimeout(()=>{
-
-document.getElementById("loader").style.opacity="0";
-
-setTimeout(()=>{
-
-document.getElementById("loader").style.display="none";
-
-},1500);
-
-},2500);
-
-};
-
-/* ========= MUSIC ========= */
-
-const music=document.getElementById("music");
-
-const musicBtn=document.getElementById("musicBtn");
-
-musicBtn.onclick=()=>{
-
-if(music.paused){
-
-music.play();
-
-musicBtn.innerHTML="🎵 Music On";
-
-}else{
-
-music.pause();
-
-musicBtn.innerHTML="🎵 Play Music";
-
-}
-
-};
