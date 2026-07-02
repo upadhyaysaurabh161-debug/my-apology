@@ -210,3 +210,44 @@ setTimeout(typing,70);
 }
 
 typing();
+/* ========= LOADER ========= */
+
+window.onload=()=>{
+
+setTimeout(()=>{
+
+document.getElementById("loader").style.opacity="0";
+
+setTimeout(()=>{
+
+document.getElementById("loader").style.display="none";
+
+},1500);
+
+},2500);
+
+};
+
+/* ========= MUSIC ========= */
+
+const music=document.getElementById("music");
+
+const musicBtn=document.getElementById("musicBtn");
+
+musicBtn.onclick=()=>{
+
+if(music.paused){
+
+music.play();
+
+musicBtn.innerHTML="🎵 Music On";
+
+}else{
+
+music.pause();
+
+musicBtn.innerHTML="🎵 Play Music";
+
+}
+
+};
