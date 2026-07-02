@@ -1,117 +1,74 @@
-// ===============================
-// PREMIUM APOLOGY WEBSITE
-// VERSION 2.0
-// ===============================
+// ==============================
+// PROJECT AURORA
+// ==============================
 
-// LOADER
+// Loader
 
-window.addEventListener("load",()=>{
+window.addEventListener("load", () => {
 
-const loader=document.getElementById("loader");
+const loader = document.getElementById("loader");
 
-setTimeout(()=>{
+setTimeout(() => {
 
-loader.style.opacity="0";
+loader.style.opacity = "0";
 
-loader.style.pointerEvents="none";
-
-setTimeout(()=>{
-
-loader.remove();
+loader.style.visibility = "hidden";
 
 },1500);
 
-},2500);
-
 });
 
+
+// ==============================
 // MUSIC
+// ==============================
 
-const music=document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
 
-const musicButton=document.getElementById("musicButton");
+const bgMusic = document.getElementById("bgMusic");
 
-let playing=false;
+let musicPlaying = false;
 
-musicButton.addEventListener("click",()=>{
+musicBtn.addEventListener("click",async()=>{
 
-if(!playing){
+try{
 
-music.play();
+if(!musicPlaying){
 
-musicButton.innerHTML="⏸";
+await bgMusic.play();
 
-playing=true;
+musicBtn.innerHTML="⏸";
 
 }else{
 
-music.pause();
+bgMusic.pause();
 
-musicButton.innerHTML="🎵";
+musicBtn.innerHTML="🎵";
 
-playing=false;
+}
+
+musicPlaying=!musicPlaying;
+
+}catch(e){
+
+console.log(e);
 
 }
 
 });
 
-// STARS
 
-const stars=document.getElementById("stars");
-
-for(let i=0;i<400;i++){
-
-const star=document.createElement("span");
-
-star.className="star";
-
-star.style.left=Math.random()*100+"vw";
-
-star.style.top=Math.random()*100+"vh";
-
-const size=Math.random()*3+1;
-
-star.style.width=size+"px";
-
-star.style.height=size+"px";
-
-star.style.animationDelay=Math.random()*5+"s";
-
-stars.appendChild(star);
-
-}
-
-// BUTTON
-
-const begin=document.getElementById("begin");
-
-const envelopeSection=document.getElementById("envelopeSection");
-
-begin.addEventListener("click",()=>{
-
-envelopeSection.scrollIntoView({
-
-behavior:"smooth"
-
-});
-
-});
-
+// ==============================
 // ENVELOPE
+// ==============================
 
 const envelope=document.getElementById("envelope");
 
 const letter=document.getElementById("letterSection");
 
-let opened=false;
-
 envelope.addEventListener("click",()=>{
 
-if(opened) return;
-
-opened=true;
-
-envelope.classList.add("open");
+envelope.classList.toggle("open");
 
 setTimeout(()=>{
 
@@ -121,109 +78,45 @@ behavior:"smooth"
 
 });
 
-typeLetter();
-
-},1800);
+},700);
 
 });
 
+
+// ==============================
 // LETTER
+// ==============================
 
-const message=`
+const typing=document.getElementById("typingText");
 
-Dear Nikita,
+const message=`Dear Nikita,
 
-I don't know if you'll read every word.
+I know I made mistakes.
 
-Maybe this changes nothing.
+This website wasn't created
+to change your decision.
 
-Maybe it changes everything.
+It was only created
+because some feelings deserved
+more than a simple text.
 
-But I wanted my apology to be more than just another text.
-
-Looking back...
-
-I realise that there were moments
-
-when I should have listened.
-
-Moments
-
-when I should have understood you better.
-
-Instead...
-
-I reacted.
-
-I wasn't trying to win.
-
-I was trying
-
-to protect
-
-what I believed
-
-was our love.
-
-For every tear,
-
-every disappointment,
-
-every moment
-
-where I made you feel unheard...
+Thank you
+for every smile,
+every laugh
+and every memory.
 
 I'm truly sorry.
 
-Thank you
+I wish you
+nothing but happiness.
 
-for every smile,
+With Love,
 
-every laugh,
-
-every hug,
-
-every memory.
-
-No matter where life takes us,
-
-those memories
-
-will always stay
-
-close to my heart.
-
-I'm not writing this
-
-to change your decision.
-
-I'm writing this
-
-because
-
-you deserved
-
-a genuine apology.
-
-Take care of yourself.
-
-Always.
-
-❤️
-
-Saurabh
-
-`;
-
-const typing=document.querySelector(".typing");
+Saurabh ❤️`;
 
 let index=0;
 
 function typeLetter(){
-
-typing.innerHTML="";
-
-function write(){
 
 if(index<message.length){
 
@@ -231,47 +124,11 @@ typing.innerHTML+=message.charAt(index);
 
 index++;
 
-setTimeout(write,35);
+setTimeout(typeLetter,35);
 
 }
 
 }
-
-write();
-
-}
-
-// HEARTBEAT
-
-setInterval(()=>{
-
-const title=document.querySelector(".hero h1");
-
-title.style.transform="scale(1.03)";
-
-setTimeout(()=>{
-
-title.style.transform="scale(1)";
-
-},250);
-
-},2200);
-
-// PARALLAX
-
-window.addEventListener("mousemove",(e)=>{
-
-const x=e.clientX/window.innerWidth;
-
-const y=e.clientY/window.innerHeight;
-
-document.getElementById("galaxy").style.transform=
-
-`translate(${x*15}px,${y*15}px) scale(1.08)`;
-
-});
-
-// FADE
 
 const observer=new IntersectionObserver(entries=>{
 
@@ -279,9 +136,7 @@ entries.forEach(entry=>{
 
 if(entry.isIntersecting){
 
-entry.target.style.opacity="1";
-
-entry.target.style.transform="translateY(0px)";
+typeLetter();
 
 }
 
@@ -289,95 +144,381 @@ entry.target.style.transform="translateY(0px)";
 
 });
 
-document.querySelectorAll("section").forEach(sec=>{
+observer.observe(typing);
 
-sec.style.opacity="0";
 
-sec.style.transform="translateY(60px)";
+// ==============================
+// FALLING FLOWERS
+// ==============================
 
-sec.style.transition="1.3s";
+function createFlower(){
 
-observer.observe(sec);
+const flower=document.createElement("div");
 
-});
-/* ==========================
-ROSE PETALS
-========================== */
+flower.className="petal";
 
-function createPetal(){
+flower.style.left=Math.random()*window.innerWidth+"px";
 
-const petal=document.createElement("div");
+flower.style.animationDuration=4+Math.random()*5+"s";
 
-petal.className="petal";
-
-petal.innerHTML="🌹";
-
-petal.style.left=Math.random()*100+"vw";
-
-petal.style.fontSize=(18+Math.random()*20)+"px";
-
-petal.style.animationDuration=(6+Math.random()*5)+"s";
-
-document.body.appendChild(petal);
+document.body.appendChild(flower);
 
 setTimeout(()=>{
 
-petal.remove();
+flower.remove();
 
-},12000);
+},9000);
 
 }
 
-setInterval(createPetal,700);
+setInterval(createFlower,500);
+// ==============================
+// MOUSE HEART EFFECT
+// ==============================
+
+document.addEventListener("mousemove",function(e){
+
+if(Math.random()>0.65){
+
+const heart=document.createElement("div");
+
+heart.className="mouse-heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=e.clientX+"px";
+
+heart.style.top=e.clientY+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(function(){
+
+heart.remove();
+
+},800);
+
+}
+
+});
 
 
-/* ==========================
-SHOOTING STARS
-========================== */
+// ==============================
+// HEART PARTICLES ON CLICK
+// ==============================
 
-function shootingStar(){
+document.addEventListener("click",function(e){
+
+for(let i=0;i<8;i++){
+
+const heart=document.createElement("div");
+
+heart.className="mouse-heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=e.clientX+"px";
+
+heart.style.top=e.clientY+"px";
+
+heart.style.transform=
+`translate(
+${Math.random()*100-50}px,
+${Math.random()*100-50}px
+)`;
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},1000);
+
+}
+
+});
+
+
+// ==============================
+// SCROLL REVEAL
+// ==============================
+
+const revealItems=document.querySelectorAll(
+
+".journey-card,.gallery-card,.timeline-item,.memory-image,.memory-text,#paper"
+
+);
+
+const revealObserver=new IntersectionObserver(function(entries){
+
+entries.forEach(function(entry){
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("active");
+
+}
+
+});
+
+},
+
+{
+
+threshold:0.15
+
+});
+
+revealItems.forEach(function(item){
+
+item.classList.add("reveal");
+
+revealObserver.observe(item);
+
+});
+
+
+// ==============================
+// SECRET POPUP
+// ==============================
+
+const secretBtn=document.getElementById("secretBtn");
+
+const popup=document.getElementById("secretPopup");
+
+const closePopup=document.getElementById("closePopup");
+
+if(secretBtn){
+
+secretBtn.addEventListener("click",function(){
+
+popup.classList.add("active");
+
+});
+
+}
+
+if(closePopup){
+
+closePopup.addEventListener("click",function(){
+
+popup.classList.remove("active");
+
+});
+
+}
+
+if(popup){
+
+popup.addEventListener("click",function(e){
+
+if(e.target===popup){
+
+popup.classList.remove("active");
+
+}
+
+});
+
+}
+
+
+// ==============================
+// BUTTON RIPPLE EFFECT
+// ==============================
+
+const buttons=document.querySelectorAll("button");
+
+buttons.forEach(function(btn){
+
+btn.addEventListener("click",function(e){
+
+const ripple=document.createElement("span");
+
+ripple.className="ripple";
+
+const rect=btn.getBoundingClientRect();
+
+ripple.style.left=(e.clientX-rect.left)+"px";
+
+ripple.style.top=(e.clientY-rect.top)+"px";
+
+btn.appendChild(ripple);
+
+setTimeout(function(){
+
+ripple.remove();
+
+},600);
+
+});
+
+});
+
+
+// ==============================
+// HERO BUTTON
+// ==============================
+
+const startStory=document.getElementById("startStory");
+
+if(startStory){
+
+startStory.addEventListener("click",function(){
+
+document.getElementById("envelopeScene").scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+});
+
+}
+// ==============================
+// TWINKLING STARS
+// ==============================
+
+function createStar(){
 
 const star=document.createElement("div");
 
-star.className="shooting";
+star.className="star";
 
-star.style.left=Math.random()*70+"vw";
+star.style.left=Math.random()*window.innerWidth+"px";
 
-star.style.top=Math.random()*30+"vh";
+star.style.top=Math.random()*window.innerHeight+"px";
+
+star.style.animationDuration=1+Math.random()*3+"s";
 
 document.body.appendChild(star);
 
-setTimeout(()=>{
+setTimeout(function(){
 
 star.remove();
 
-},1500);
+},4000);
 
 }
 
-setInterval(shootingStar,5000);
+setInterval(createStar,250);
 
 
-/* ==========================
-CURSOR GLOW
-========================== */
+// ==============================
+// HEART GLOW
+// ==============================
 
-document.addEventListener("mousemove",(e)=>{
+const hearts=document.querySelectorAll(".loader-heart,.seal");
 
-const glow=document.createElement("div");
+setInterval(function(){
 
-glow.className="cursorGlow";
+hearts.forEach(function(item){
 
-glow.style.left=e.clientX+"px";
+item.style.transform="scale(1.15)";
 
-glow.style.top=e.clientY+"px";
+setTimeout(function(){
 
-document.body.appendChild(glow);
+item.style.transform="scale(1)";
 
-setTimeout(()=>{
-
-glow.remove();
-
-},500);
+},300);
 
 });
+
+},1500);
+
+
+// ==============================
+// FLOATING ENVELOPE
+// ==============================
+
+if(envelope){
+
+setInterval(function(){
+
+envelope.style.transform="translateY(-8px)";
+
+setTimeout(function(){
+
+envelope.style.transform="translateY(0px)";
+
+},1200);
+
+},2400);
+
+}
+
+
+// ==============================
+// HERO PARALLAX
+// ==============================
+
+document.addEventListener("mousemove",function(e){
+
+const hero=document.querySelector(".hero-content");
+
+if(!hero) return;
+
+const x=(window.innerWidth/2-e.clientX)/60;
+
+const y=(window.innerHeight/2-e.clientY)/60;
+
+hero.style.transform=
+"translate("+x+"px,"+y+"px)";
+
+});
+
+
+// ==============================
+// SCROLL TO TOP
+// ==============================
+
+window.addEventListener("scroll",function(){
+
+if(window.scrollY>300){
+
+musicBtn.style.opacity="1";
+
+}else{
+
+musicBtn.style.opacity="0.9";
+
+}
+
+});
+
+
+// ==============================
+// ENDING FADE
+// ==============================
+
+const ending=document.getElementById("ending");
+
+if(ending){
+
+const endingObserver=new IntersectionObserver(function(entries){
+
+entries.forEach(function(entry){
+
+if(entry.isIntersecting){
+
+ending.style.opacity="1";
+
+ending.style.transform="translateY(0px)";
+
+}
+
+});
+
+});
+
+endingObserver.observe(ending);
+
+}
+
+
+// ==============================
+// CONSOLE MESSAGE 😄
+// ==============================
+
+console.log("❤️ made with love by shaurya ❤️");
