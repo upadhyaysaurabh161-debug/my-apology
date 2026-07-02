@@ -1,53 +1,57 @@
-// ==============================
-// PROJECT AURORA
-// ==============================
-
-// Loader
+// ==========================================
+// MADE WITH LOVE
+// PART 1
+// ==========================================
 
 window.addEventListener("load", () => {
 
-const loader = document.getElementById("loader");
+const loader=document.getElementById("loader");
 
-setTimeout(() => {
+if(loader){
 
-loader.style.opacity = "0";
+setTimeout(()=>{
 
-loader.style.visibility = "hidden";
+loader.style.opacity="0";
+
+loader.style.visibility="hidden";
 
 },1500);
 
+}
+
 });
 
-
-// ==============================
+// ==========================================
 // MUSIC
-// ==============================
+// ==========================================
 
-const musicBtn = document.getElementById("musicBtn");
+const music=document.getElementById("bgMusic");
 
-const bgMusic = document.getElementById("bgMusic");
+const musicBtn=document.getElementById("musicBtn");
 
-let musicPlaying = false;
+let playing=false;
 
-musicBtn.addEventListener("click",async()=>{
+if(musicBtn){
+
+musicBtn.onclick=async()=>{
 
 try{
 
-if(!musicPlaying){
+if(!playing){
 
-await bgMusic.play();
+await music.play();
 
 musicBtn.innerHTML="⏸";
 
 }else{
 
-bgMusic.pause();
+music.pause();
 
 musicBtn.innerHTML="🎵";
 
 }
 
-musicPlaying=!musicPlaying;
+playing=!playing;
 
 }catch(e){
 
@@ -55,37 +59,51 @@ console.log(e);
 
 }
 
-});
+};
 
+}
 
-// ==============================
-// ENVELOPE
-// ==============================
+// ==========================================
+// HERO BUTTON
+// ==========================================
 
-const envelope=document.getElementById("envelope");
+const heroBtn=document.querySelector(".hero-btn");
 
-const letter=document.getElementById("letterSection");
+if(heroBtn){
 
-envelope.addEventListener("click",()=>{
+heroBtn.onclick=()=>{
 
-envelope.classList.toggle("open");
+document.getElementById("envelopeScene")
 
-setTimeout(()=>{
-
-letter.scrollIntoView({
+.scrollIntoView({
 
 behavior:"smooth"
 
 });
 
-},700);
+};
 
-});
+}
 
+// ==========================================
+// ENVELOPE
+// ==========================================
 
-// ==============================
-// LETTER
-// ==============================
+const envelope=document.getElementById("envelope");
+
+if(envelope){
+
+envelope.onclick=()=>{
+
+envelope.classList.toggle("open");
+
+};
+
+}
+
+// ==========================================
+// LETTER TYPING
+// ==========================================
 
 const typing=document.getElementById("typingText");
 
@@ -93,22 +111,20 @@ const message=`Dear Nikita,
 
 I know I made mistakes.
 
-This website wasn't created
+This website wasn't built
 to change your decision.
 
-It was only created
-because some feelings deserved
-more than a simple text.
+It was built because
+some feelings deserved
+more than a text.
 
 Thank you
 for every smile,
-every laugh
-and every memory.
+every laugh,
+every memory.
 
-I'm truly sorry.
-
-I wish you
-nothing but happiness.
+I genuinely wish
+you happiness.
 
 With Love,
 
@@ -117,6 +133,8 @@ Saurabh ❤️`;
 let index=0;
 
 function typeLetter(){
+
+if(!typing) return;
 
 if(index<message.length){
 
@@ -130,6 +148,8 @@ setTimeout(typeLetter,35);
 
 }
 
+if(typing){
+
 const observer=new IntersectionObserver(entries=>{
 
 entries.forEach(entry=>{
@@ -137,6 +157,8 @@ entries.forEach(entry=>{
 if(entry.isIntersecting){
 
 typeLetter();
+
+observer.disconnect();
 
 }
 
@@ -146,39 +168,34 @@ typeLetter();
 
 observer.observe(typing);
 
+}
 
-// ==============================
-// FALLING FLOWERS
-// ==============================
+// ==========================================
+// FLOATING ENVELOPE
+// ==========================================
 
-function createFlower(){
+if(envelope){
 
-const flower=document.createElement("div");
+setInterval(()=>{
 
-flower.className="petal";
-
-flower.style.left=Math.random()*window.innerWidth+"px";
-
-flower.style.animationDuration=4+Math.random()*5+"s";
-
-document.body.appendChild(flower);
+envelope.style.transform="translateY(-10px)";
 
 setTimeout(()=>{
 
-flower.remove();
+envelope.style.transform="translateY(0px)";
 
-},9000);
+},1800);
+
+},3500);
 
 }
+// ==========================================
+// MOUSE HEARTS
+// ==========================================
 
-setInterval(createFlower,500);
-// ==============================
-// MOUSE HEART EFFECT
-// ==============================
+document.addEventListener("mousemove",(e)=>{
 
-document.addEventListener("mousemove",function(e){
-
-if(Math.random()>0.65){
+if(Math.random()>0.70){
 
 const heart=document.createElement("div");
 
@@ -192,24 +209,24 @@ heart.style.top=e.clientY+"px";
 
 document.body.appendChild(heart);
 
-setTimeout(function(){
+setTimeout(()=>{
 
 heart.remove();
 
-},800);
+},900);
 
 }
 
 });
 
 
-// ==============================
-// HEART PARTICLES ON CLICK
-// ==============================
+// ==========================================
+// HEART BURST ON CLICK
+// ==========================================
 
-document.addEventListener("click",function(e){
+document.addEventListener("click",(e)=>{
 
-for(let i=0;i<8;i++){
+for(let i=0;i<10;i++){
 
 const heart=document.createElement("div");
 
@@ -221,11 +238,13 @@ heart.style.left=e.clientX+"px";
 
 heart.style.top=e.clientY+"px";
 
-heart.style.transform=
-`translate(
-${Math.random()*100-50}px,
-${Math.random()*100-50}px
-)`;
+heart.style.transform=`
+translate(
+${Math.random()*140-70}px,
+${Math.random()*140-70}px
+)
+scale(${Math.random()+0.5})
+`;
 
 document.body.appendChild(heart);
 
@@ -240,19 +259,87 @@ heart.remove();
 });
 
 
-// ==============================
+// ==========================================
+// ROSE PETALS
+// ==========================================
+
+function createPetal(){
+
+const petal=document.createElement("div");
+
+petal.className="petal";
+
+petal.style.left=Math.random()*window.innerWidth+"px";
+
+petal.style.animationDuration=
+
+5+Math.random()*5+"s";
+
+petal.style.opacity=
+
+0.5+Math.random();
+
+petal.style.transform=
+
+`rotate(${Math.random()*360}deg)`;
+
+document.body.appendChild(petal);
+
+setTimeout(()=>{
+
+petal.remove();
+
+},10000);
+
+}
+
+setInterval(createPetal,600);
+
+
+// ==========================================
+// TWINKLING STARS
+// ==========================================
+
+function createStar(){
+
+const star=document.createElement("div");
+
+star.className="star";
+
+star.style.left=Math.random()*window.innerWidth+"px";
+
+star.style.top=Math.random()*window.innerHeight+"px";
+
+star.style.animationDuration=
+
+1+Math.random()*3+"s";
+
+document.body.appendChild(star);
+
+setTimeout(()=>{
+
+star.remove();
+
+},3500);
+
+}
+
+setInterval(createStar,250);
+
+
+// ==========================================
 // SCROLL REVEAL
-// ==============================
+// ==========================================
 
-const revealItems=document.querySelectorAll(
+const reveal=document.querySelectorAll(
 
-".journey-card,.gallery-card,.timeline-item,.memory-image,.memory-text,#paper"
+".journey-card,.gallery-card,.timeline-item,.memory-image,.memory-text,#paper,.quote-container"
 
 );
 
-const revealObserver=new IntersectionObserver(function(entries){
+const revealObserver=new IntersectionObserver(entries=>{
 
-entries.forEach(function(entry){
+entries.forEach(entry=>{
 
 if(entry.isIntersecting){
 
@@ -270,7 +357,7 @@ threshold:0.15
 
 });
 
-revealItems.forEach(function(item){
+reveal.forEach(item=>{
 
 item.classList.add("reveal");
 
@@ -279,19 +366,36 @@ revealObserver.observe(item);
 });
 
 
-// ==============================
+// ==========================================
+// HERO PARALLAX
+// ==========================================
+
+const hero=document.querySelector(".hero-content");
+
+document.addEventListener("mousemove",(e)=>{
+
+if(!hero) return;
+
+const x=(window.innerWidth/2-e.clientX)/60;
+
+const y=(window.innerHeight/2-e.clientY)/60;
+
+hero.style.transform=
+
+`translate(${x}px,${y}px)`;
+
+});
+// ==========================================
 // SECRET POPUP
-// ==============================
+// ==========================================
 
-const secretBtn=document.getElementById("secretBtn");
+const secretBtn = document.getElementById("secretBtn");
+const popup = document.getElementById("secretPopup");
+const closePopup = document.getElementById("closePopup");
 
-const popup=document.getElementById("secretPopup");
+if(secretBtn && popup){
 
-const closePopup=document.getElementById("closePopup");
-
-if(secretBtn){
-
-secretBtn.addEventListener("click",function(){
+secretBtn.addEventListener("click",()=>{
 
 popup.classList.add("active");
 
@@ -299,9 +403,9 @@ popup.classList.add("active");
 
 }
 
-if(closePopup){
+if(closePopup && popup){
 
-closePopup.addEventListener("click",function(){
+closePopup.addEventListener("click",()=>{
 
 popup.classList.remove("active");
 
@@ -311,7 +415,7 @@ popup.classList.remove("active");
 
 if(popup){
 
-popup.addEventListener("click",function(e){
+popup.addEventListener("click",(e)=>{
 
 if(e.target===popup){
 
@@ -324,187 +428,205 @@ popup.classList.remove("active");
 }
 
 
-// ==============================
-// BUTTON RIPPLE EFFECT
-// ==============================
+// ==========================================
+// MUSIC BUTTON ANIMATION
+// ==========================================
 
-const buttons=document.querySelectorAll("button");
+if(musicBtn){
 
-buttons.forEach(function(btn){
+setInterval(()=>{
 
-btn.addEventListener("click",function(e){
+musicBtn.style.transform="scale(1.08)";
 
-const ripple=document.createElement("span");
+setTimeout(()=>{
 
-ripple.className="ripple";
+musicBtn.style.transform="scale(1)";
 
-const rect=btn.getBoundingClientRect();
+},250);
 
-ripple.style.left=(e.clientX-rect.left)+"px";
-
-ripple.style.top=(e.clientY-rect.top)+"px";
-
-btn.appendChild(ripple);
-
-setTimeout(function(){
-
-ripple.remove();
-
-},600);
-
-});
-
-});
-
-
-// ==============================
-// HERO BUTTON
-// ==============================
-
-const startStory=document.getElementById("startStory");
-
-if(startStory){
-
-startStory.addEventListener("click",function(){
-
-document.getElementById("envelopeScene").scrollIntoView({
-
-behavior:"smooth"
-
-});
-
-});
-
-}
-// ==============================
-// TWINKLING STARS
-// ==============================
-
-function createStar(){
-
-const star=document.createElement("div");
-
-star.className="star";
-
-star.style.left=Math.random()*window.innerWidth+"px";
-
-star.style.top=Math.random()*window.innerHeight+"px";
-
-star.style.animationDuration=1+Math.random()*3+"s";
-
-document.body.appendChild(star);
-
-setTimeout(function(){
-
-star.remove();
-
-},4000);
+},2500);
 
 }
 
-setInterval(createStar,250);
 
-
-// ==============================
+// ==========================================
 // HEART GLOW
-// ==============================
+// ==========================================
 
-const hearts=document.querySelectorAll(".loader-heart,.seal");
+function pulseHeart(){
 
-setInterval(function(){
+const hearts=document.querySelectorAll(".seal,.loader-heart");
 
-hearts.forEach(function(item){
+hearts.forEach((heart)=>{
 
-item.style.transform="scale(1.15)";
+heart.animate([
 
-setTimeout(function(){
+{
 
-item.style.transform="scale(1)";
+transform:"translate(-50%,-50%) scale(1)"
 
-},300);
+},
+
+{
+
+transform:"translate(-50%,-50%) scale(1.18)"
+
+},
+
+{
+
+transform:"translate(-50%,-50%) scale(1)"
+
+}
+
+],{
+
+duration:1200
 
 });
 
-},1500);
+});
+
+}
+
+setInterval(pulseHeart,1500);
 
 
-// ==============================
-// FLOATING ENVELOPE
-// ==============================
+// ==========================================
+// FLOATING BACKGROUND
+// ==========================================
+
+let move=0;
+
+setInterval(()=>{
+
+move+=0.15;
+
+const stars=document.getElementById("stars");
+
+if(stars){
+
+stars.style.transform=`translateY(${move}px)`;
+
+}
+
+},40);
+
+
+// ==========================================
+// SCROLL INDICATOR
+// ==========================================
+
+window.addEventListener("scroll",()=>{
+
+const scroll=window.scrollY;
+
+const hero=document.querySelector(".hero");
+
+if(hero){
+
+hero.style.opacity=Math.max(0,1-scroll/700);
+
+}
+
+});
+
+
+// ==========================================
+// BUTTON HOVER EFFECT
+// ==========================================
+
+document.querySelectorAll("button").forEach(btn=>{
+
+btn.addEventListener("mouseenter",()=>{
+
+btn.style.transform="translateY(-4px) scale(1.03)";
+
+});
+
+btn.addEventListener("mouseleave",()=>{
+
+btn.style.transform="translateY(0) scale(1)";
+
+});
+
+});
+
+
+// ==========================================
+// ENVELOPE AUTO FLOAT
+// ==========================================
 
 if(envelope){
 
-setInterval(function(){
+let direction=1;
 
-envelope.style.transform="translateY(-8px)";
+setInterval(()=>{
 
-setTimeout(function(){
+const current=envelope.style.marginTop || "0px";
 
-envelope.style.transform="translateY(0px)";
+let value=parseInt(current)||0;
 
-},1200);
+value+=direction;
 
-},2400);
+if(value>8){
+
+direction=-1;
+
+}
+
+if(value<0){
+
+direction=1;
+
+}
+
+envelope.style.marginTop=value+"px";
+
+},80);
 
 }
 
 
-// ==============================
-// HERO PARALLAX
-// ==============================
-
-document.addEventListener("mousemove",function(e){
-
-const hero=document.querySelector(".hero-content");
-
-if(!hero) return;
-
-const x=(window.innerWidth/2-e.clientX)/60;
-
-const y=(window.innerHeight/2-e.clientY)/60;
-
-hero.style.transform=
-"translate("+x+"px,"+y+"px)";
-
-});
-
-
-// ==============================
-// SCROLL TO TOP
-// ==============================
-
-window.addEventListener("scroll",function(){
-
-if(window.scrollY>300){
-
-musicBtn.style.opacity="1";
-
-}else{
-
-musicBtn.style.opacity="0.9";
-
-}
-
-});
-
-
-// ==============================
+// ==========================================
 // ENDING FADE
-// ==============================
+// ==========================================
 
 const ending=document.getElementById("ending");
 
 if(ending){
 
-const endingObserver=new IntersectionObserver(function(entries){
+const endObserver=new IntersectionObserver((entries)=>{
 
-entries.forEach(function(entry){
+entries.forEach(entry=>{
 
 if(entry.isIntersecting){
 
-ending.style.opacity="1";
+ending.animate([
 
-ending.style.transform="translateY(0px)";
+{
+
+opacity:0,
+
+transform:"translateY(80px)"
+
+},
+
+{
+
+opacity:1,
+
+transform:"translateY(0)"
+
+}
+
+],{
+
+duration:1200,
+
+fill:"forwards"
+
+});
 
 }
 
@@ -512,13 +634,13 @@ ending.style.transform="translateY(0px)";
 
 });
 
-endingObserver.observe(ending);
+endObserver.observe(ending);
 
 }
 
 
-// ==============================
+// ==========================================
 // CONSOLE MESSAGE 😄
-// ==============================
+// ==========================================
 
-console.log("❤️ made with love by shaurya ❤️");
+console.log("❤️ Made with love by shaurya ❤️");
