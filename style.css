@@ -377,3 +377,145 @@ font-size:52px;
 }
 
 }
+
+/* ================= LOADER ================= */
+
+#loader{
+
+position:fixed;
+
+inset:0;
+
+background:#000;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+z-index:99999;
+
+transition:1.5s;
+
+}
+
+.loader-content{
+
+text-align:center;
+
+}
+
+.loader-heart{
+
+font-size:70px;
+
+animation:beat 1s infinite;
+
+}
+
+.loader-content h2{
+
+margin-top:20px;
+
+font-size:35px;
+
+letter-spacing:2px;
+
+}
+
+.loader-content p{
+
+opacity:.7;
+
+margin-top:10px;
+
+}
+
+@keyframes beat{
+
+0%{transform:scale(1);}
+
+50%{transform:scale(1.25);}
+
+100%{transform:scale(1);}
+
+}
+
+/* ================= GALAXY ================= */
+
+#galaxy{
+
+position:fixed;
+
+inset:0;
+
+background:
+
+radial-gradient(circle at 20% 20%,rgba(120,0,255,.20),transparent),
+
+radial-gradient(circle at 80% 40%,rgba(0,180,255,.15),transparent),
+
+radial-gradient(circle at 50% 100%,rgba(255,255,255,.05),transparent),
+
+#030712;
+
+z-index:-5;
+
+animation:galaxyMove 25s infinite alternate;
+
+}
+
+@keyframes galaxyMove{
+
+0%{
+
+transform:scale(1);
+
+}
+
+100%{
+
+transform:scale(1.08) rotate(2deg);
+
+}
+
+}
+
+/* ================= MUSIC ================= */
+
+#musicBtn{
+
+position:fixed;
+
+top:25px;
+
+right:25px;
+
+padding:12px 24px;
+
+border:none;
+
+border-radius:50px;
+
+background:rgba(255,255,255,.15);
+
+color:white;
+
+backdrop-filter:blur(10px);
+
+cursor:pointer;
+
+z-index:999;
+
+transition:.3s;
+
+}
+
+#musicBtn:hover{
+
+transform:scale(1.08);
+
+background:rgba(255,255,255,.25);
+
+}
