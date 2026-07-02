@@ -1,326 +1,212 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-font-family:'Poppins',sans-serif;
-}
+// ===== OPEN LETTER =====
 
-body{
+const button = document.getElementById("openLetter");
+const letter = document.getElementById("letter");
 
-background:#020617;
-overflow-x:hidden;
-color:white;
+button.addEventListener("click",()=>{
 
-}
+letter.classList.remove("hidden");
 
-body::before{
+letter.scrollIntoView({
+behavior:"smooth"
+});
 
-content:"";
-position:fixed;
-width:200%;
-height:200%;
-background:
-radial-gradient(circle at 20% 20%,rgba(255,0,100,.15),transparent 30%),
-radial-gradient(circle at 80% 40%,rgba(0,200,255,.15),transparent 30%),
-radial-gradient(circle at 50% 90%,rgba(255,255,255,.08),transparent 40%);
-animation:bgmove 25s linear infinite;
-z-index:-3;
+});
 
-}
+// ===== STARS =====
 
-@keyframes bgmove{
+const stars = document.getElementById("stars");
 
-0%{transform:translate(0,0);}
-50%{transform:translate(-8%,-6%);}
-100%{transform:translate(0,0);}
+for(let i=0;i<250;i++){
 
-}
+const star=document.createElement("div");
 
-.overlay{
+star.className="star";
 
-position:fixed;
-inset:0;
+star.style.left=Math.random()*100+"vw";
 
-background:
+star.style.top=Math.random()*100+"vh";
 
-linear-gradient(to bottom,
+star.style.animationDelay=Math.random()*5+"s";
 
-rgba(0,0,0,.2),
+star.style.opacity=Math.random();
 
-rgba(0,0,0,.85)
+star.style.width=(Math.random()*3+1)+"px";
 
-);
+star.style.height=star.style.width;
 
-z-index:-2;
+stars.appendChild(star);
 
 }
 
-#particles{
+// ===== FLOATING HEARTS =====
 
-position:fixed;
-width:100%;
-height:100%;
-z-index:-1;
+function createHeart(){
 
-}
+const heart=document.createElement("div");
 
-.hero{
+heart.className="heart";
 
-height:100vh;
+const hearts=["❤️","🤍","🌹","✨"];
 
-display:flex;
+heart.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
 
-flex-direction:column;
+heart.style.left=Math.random()*100+"vw";
 
-justify-content:center;
+heart.style.fontSize=(Math.random()*20+15)+"px";
 
-align-items:center;
+heart.style.animationDuration=(Math.random()*4+6)+"s";
 
-text-align:center;
+document.body.appendChild(heart);
 
-padding:30px;
+setTimeout(()=>{
 
-}
+heart.remove();
 
-.typing{
-
-font-size:22px;
-
-color:#ff8fb8;
-
-letter-spacing:2px;
-
-margin-bottom:25px;
-
-height:35px;
+},10000);
 
 }
 
-.title{
+setInterval(createHeart,350);
 
-font-size:75px;
+// ===== SHOOTING STARS =====
 
-font-family:'Great Vibes',cursive;
+function shootingStar(){
 
-margin-bottom:20px;
+const star=document.createElement("div");
 
-text-shadow:0 0 25px rgba(255,255,255,.25);
+star.style.position="fixed";
 
-}
+star.style.width="2px";
 
-.subtitle{
+star.style.height="120px";
 
-font-size:22px;
+star.style.background="linear-gradient(white,transparent)";
 
-opacity:.9;
+star.style.left=Math.random()*100+"vw";
 
-max-width:700px;
+star.style.top="-100px";
 
-line-height:38px;
+star.style.transform="rotate(35deg)";
 
-margin-bottom:45px;
+star.style.opacity=".8";
 
-}
+star.style.zIndex="999";
 
-button{
+star.style.transition="all 1.5s linear";
 
-padding:18px 50px;
+document.body.appendChild(star);
 
-border:none;
+setTimeout(()=>{
 
-border-radius:60px;
+star.style.top="120vh";
 
-cursor:pointer;
+star.style.left=(parseFloat(star.style.left)+20)+"vw";
 
-font-size:18px;
+},100);
 
-background:linear-gradient(135deg,#ff4d6d,#ff758f);
+setTimeout(()=>{
 
-color:white;
+star.remove();
 
-transition:.4s;
-
-box-shadow:0 20px 50px rgba(255,0,100,.35);
+},1800);
 
 }
 
-button:hover{
+setInterval(shootingStar,5000);
 
-transform:translateY(-8px) scale(1.05);
+// ===== CURSOR GLOW =====
 
-box-shadow:0 30px 80px rgba(255,0,100,.45);
+document.addEventListener("mousemove",(e)=>{
 
-}
+const glow=document.createElement("div");
 
-.hidden{
+glow.style.position="fixed";
 
-display:none;
+glow.style.left=e.clientX+"px";
 
-}
+glow.style.top=e.clientY+"px";
 
-.letter{
+glow.style.width="8px";
 
-padding:120px 20px;
+glow.style.height="8px";
 
-display:flex;
+glow.style.borderRadius="50%";
 
-justify-content:center;
+glow.style.background="#ff5d8f";
 
-}
+glow.style.boxShadow="0 0 20px #ff5d8f";
 
-.glass{
+glow.style.pointerEvents="none";
 
-max-width:850px;
+glow.style.zIndex="9999";
 
-padding:70px;
+document.body.appendChild(glow);
 
-border-radius:30px;
+setTimeout(()=>{
 
-background:rgba(255,255,255,.08);
+glow.style.opacity="0";
 
-backdrop-filter:blur(22px);
+glow.style.transform="scale(3)";
 
-border:1px solid rgba(255,255,255,.15);
+},20);
 
-box-shadow:0 20px 70px rgba(0,0,0,.55);
+setTimeout(()=>{
 
-animation:fadeUp 1.5s;
+glow.remove();
 
-}
+},500);
 
-.glass h2{
+});
 
-font-size:40px;
+// ===== TITLE FADE =====
 
-margin-bottom:35px;
+window.addEventListener("scroll",()=>{
 
-}
+const hero=document.querySelector(".hero");
 
-.glass p{
+hero.style.opacity=1-window.scrollY/500;
 
-font-size:20px;
+});
 
-line-height:42px;
+// ===== HEARTBEAT =====
 
-margin-bottom:30px;
+setInterval(()=>{
 
-color:#ececec;
+const title=document.querySelector("h1");
 
-}
+title.style.transform="scale(1.03)";
 
-.signature{
+setTimeout(()=>{
 
-font-family:'Great Vibes',cursive;
+title.style.transform="scale(1)";
 
-font-size:70px;
+},300);
 
-margin-top:50px;
+},1800);
 
-color:#ff89ad;
+// ===== TYPEWRITER EFFECT =====
 
-}
+const text="Every heartbeat still whispers your name...";
 
-@keyframes fadeUp{
+const small=document.querySelector(".small");
 
-from{
+small.innerHTML="";
 
-opacity:0;
+let i=0;
 
-transform:translateY(50px);
+function typing(){
 
-}
+if(i<text.length){
 
-to{
+small.innerHTML+=text.charAt(i);
 
-opacity:1;
+i++;
 
-transform:translateY(0);
+setTimeout(typing,70);
 
 }
 
 }
 
-.heart{
-
-position:fixed;
-
-bottom:-20px;
-
-color:#ff4d6d;
-
-animation:float linear forwards;
-
-pointer-events:none;
-
-}
-
-@keyframes float{
-
-0%{
-
-transform:translateY(0) scale(.5);
-
-opacity:0;
-
-}
-
-15%{
-
-opacity:1;
-
-}
-
-100%{
-
-transform:translateY(-120vh) scale(1.6);
-
-opacity:0;
-
-}
-
-}
-
-@media(max-width:768px){
-
-.title{
-
-font-size:52px;
-
-}
-
-.subtitle{
-
-font-size:18px;
-
-line-height:32px;
-
-}
-
-.glass{
-
-padding:35px;
-
-}
-
-.glass h2{
-
-font-size:32px;
-
-}
-
-.glass p{
-
-font-size:17px;
-
-line-height:34px;
-
-}
-
-.signature{
-
-font-size:55px;
-
-}
-
-}
+typing();
