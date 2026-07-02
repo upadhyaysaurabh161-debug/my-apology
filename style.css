@@ -398,3 +398,145 @@ transform:rotateX(180deg);
 transform:translateY(-170px);
 
 }
+/* ===========================
+ROSE PETALS
+=========================== */
+
+.petal{
+
+position:fixed;
+
+top:-80px;
+
+font-size:24px;
+
+pointer-events:none;
+
+z-index:999;
+
+animation:petalFall linear forwards;
+
+filter:drop-shadow(0 0 10px rgba(255,80,120,.3));
+
+}
+
+@keyframes petalFall{
+
+0%{
+
+transform:
+translateY(-100px)
+rotate(0deg);
+
+opacity:0;
+
+}
+
+10%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:
+
+translateY(120vh)
+translateX(120px)
+rotate(720deg);
+
+opacity:0;
+
+}
+
+}
+
+/* ===========================
+SHOOTING STAR
+=========================== */
+
+.shooting{
+
+position:fixed;
+
+width:180px;
+
+height:2px;
+
+background:linear-gradient(to right,#fff,transparent);
+
+pointer-events:none;
+
+transform:rotate(-35deg);
+
+opacity:.8;
+
+z-index:2;
+
+animation:shoot 1.5s linear forwards;
+
+}
+
+@keyframes shoot{
+
+0%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:
+translateX(500px)
+translateY(300px)
+rotate(-35deg);
+
+opacity:0;
+
+}
+
+}
+
+/* ===========================
+CURSOR GLOW
+=========================== */
+
+.cursorGlow{
+
+position:fixed;
+
+width:12px;
+
+height:12px;
+
+border-radius:50%;
+
+background:#ff6b9a;
+
+box-shadow:
+
+0 0 15px #ff6b9a,
+
+0 0 35px #ff6b9a;
+
+pointer-events:none;
+
+z-index:99999;
+
+animation:cursorFade .5s linear forwards;
+
+}
+
+@keyframes cursorFade{
+
+100%{
+
+opacity:0;
+
+transform:scale(2);
+
+}
+
+}
