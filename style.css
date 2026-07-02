@@ -1,542 +1,780 @@
-/* ===========================
-   RESET
-=========================== */
+/* =====================================================
+   PREMIUM CINEMATIC WEBSITE - style.css (Part 1)
+   Base, Loader, Background, Hero
+   ===================================================== */
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-
-background:#030712;
-overflow-x:hidden;
-color:#fff;
-font-family:'Poppins',sans-serif;
-
+    font-family:"Poppins",sans-serif;
+    background:#050816;
+    color:#fff;
+    overflow-x:hidden;
+    line-height:1.7;
 }
 
-/* ===========================
-GALAXY
-=========================== */
-
-#galaxy{
-
-position:fixed;
-left:0;
-top:0;
-width:100%;
-height:100%;
-z-index:-5;
-
-background:
-
-radial-gradient(circle at 20% 20%,rgba(90,0,255,.22),transparent 25%),
-
-radial-gradient(circle at 80% 30%,rgba(0,170,255,.15),transparent 30%),
-
-radial-gradient(circle at 50% 100%,rgba(255,255,255,.05),transparent 45%),
-
-#020617;
-
-animation:galaxy 20s infinite alternate;
-
+:root{
+    --bg:#050816;
+    --card:rgba(255,255,255,.08);
+    --glass:rgba(255,255,255,.10);
+    --accent:#ff6b81;
+    --gold:#ffd27a;
+    --text:#ffffff;
+    --muted:#d8d8d8;
+    --radius:24px;
+    --blur:20px;
+    --shadow:0 20px 60px rgba(0,0,0,.45);
 }
 
-@keyframes galaxy{
-
-0%{
-
-transform:scale(1);
-
-}
-
-100%{
-
-transform:scale(1.12) rotate(2deg);
-
-}
-
-}
-
-/* ===========================
-AURORA
-=========================== */
-
-#aurora{
-
-position:fixed;
-inset:0;
-
-background:
-
-linear-gradient(
-
-120deg,
-
-transparent,
-
-rgba(0,255,255,.05),
-
-transparent,
-
-rgba(255,0,180,.05),
-
-transparent
-
-);
-
-background-size:400%;
-
-animation:aurora 15s infinite linear;
-
-z-index:-4;
-
-}
-
-@keyframes aurora{
-
-0%{
-
-background-position:0%;
-
-}
-
-100%{
-
-background-position:400%;
-
-}
-
-}
-
-/* ===========================
-LOADER
-=========================== */
+/* Loader */
 
 #loader{
-
-position:fixed;
-inset:0;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-background:black;
-
-z-index:99999;
-
-transition:1.5s;
-
+    position:fixed;
+    inset:0;
+    background:#050816;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    transition:1s ease;
 }
 
-.loader-content{
-
-text-align:center;
-
+.loader-heart{
+    font-size:64px;
+    animation:heartbeat 1.4s infinite;
 }
 
-.heart-loader{
-
-font-size:80px;
-
-animation:beat 1s infinite;
-
+#loader h1{
+    margin-top:20px;
+    font-size:2rem;
 }
 
-@keyframes beat{
-
-0%{transform:scale(1);}
-50%{transform:scale(1.25);}
-100%{transform:scale(1);}
-
+#loader p{
+    color:#bfbfbf;
+    margin-top:10px;
 }
 
-.loader-content h1{
-
-margin-top:25px;
-font-size:42px;
-
+@keyframes heartbeat{
+    0%,100%{transform:scale(1);}
+    20%{transform:scale(1.15);}
+    40%{transform:scale(.95);}
+    60%{transform:scale(1.12);}
 }
 
-.loader-content p{
+/* Background */
 
-margin-top:10px;
-opacity:.7;
-
+#galaxy,
+#stars,
+#aurora,
+#moon,
+#particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
 }
 
-/* ===========================
-HERO
-=========================== */
-
-.hero{
-
-height:100vh;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-align-items:center;
-
-text-align:center;
-
-padding:40px;
-
+#galaxy{
+    background:
+    radial-gradient(circle at top,#16275f 0%,#050816 55%,#02030b 100%);
+    z-index:-5;
 }
 
-.hero h3{
-
-color:#ff9bc4;
-
-letter-spacing:4px;
-
-margin-bottom:15px;
-
-font-weight:400;
-
+#stars{
+    background-image:
+    radial-gradient(white 1px,transparent 1px),
+    radial-gradient(white 1px,transparent 1px);
+    background-size:120px 120px,200px 200px;
+    background-position:0 0,60px 40px;
+    opacity:.45;
+    animation:drift 120s linear infinite;
+    z-index:-4;
 }
 
-.hero h1{
-
-font-size:92px;
-
-font-family:'Great Vibes',cursive;
-
-margin-bottom:25px;
-
-text-shadow:0 0 35px rgba(255,255,255,.25);
-
+@keyframes drift{
+    from{transform:translateY(0);}
+    to{transform:translateY(-600px);}
 }
 
-.hero p{
-
-max-width:700px;
-
-line-height:42px;
-
-font-size:22px;
-
-opacity:.85;
-
+#aurora{
+    background:
+    radial-gradient(circle at 20% 20%,rgba(0,255,255,.12),transparent 45%),
+    radial-gradient(circle at 80% 30%,rgba(255,0,170,.12),transparent 45%);
+    filter:blur(70px);
+    animation:auroraMove 12s ease-in-out infinite alternate;
+    z-index:-3;
 }
 
-#begin{
-
-margin-top:45px;
-
-padding:18px 45px;
-
-border:none;
-
-border-radius:50px;
-
-background:linear-gradient(135deg,#ff4d6d,#ff8fa3);
-
-color:white;
-
-cursor:pointer;
-
-font-size:18px;
-
-transition:.4s;
-
-box-shadow:0 25px 60px rgba(255,50,120,.35);
-
+@keyframes auroraMove{
+    from{transform:translateX(-50px);}
+    to{transform:translateX(50px);}
 }
 
-#begin:hover{
-
-transform:translateY(-6px);
-
-box-shadow:0 35px 80px rgba(255,50,120,.45);
-
+#moon{
+    width:240px;
+    height:240px;
+    border-radius:50%;
+    position:fixed;
+    top:70px;
+    right:80px;
+    background:#fffdf5;
+    box-shadow:0 0 80px rgba(255,255,255,.35);
+    opacity:.08;
+    z-index:-2;
 }
-/* ==========================
-ENVELOPE
-========================== */
 
-#envelopeSection{
+/* Music */
 
-height:100vh;
+#musicBtn{
+    position:fixed;
+    top:24px;
+    right:24px;
+    width:58px;
+    height:58px;
+    border:none;
+    border-radius:50%;
+    background:var(--glass);
+    backdrop-filter:blur(var(--blur));
+    color:#fff;
+    cursor:pointer;
+    box-shadow:var(--shadow);
+    z-index:1000;
+    transition:.35s;
+}
 
-display:flex;
+#musicBtn:hover{
+    transform:scale(1.08) rotate(8deg);
+}
 
-justify-content:center;
+/* Hero */
 
-align-items:center;
+section{
+    width:min(1200px,92%);
+    margin:auto;
+    padding:120px 0;
+}
 
+#hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.eyebrow{
+    color:var(--gold);
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:18px;
+}
+
+.hero-content h1{
+    font-size:clamp(3rem,7vw,6.4rem);
+    font-family:"Cormorant Garamond",serif;
+    line-height:1.05;
+}
+
+.hero-description{
+    max-width:700px;
+    margin:35px auto;
+    color:var(--muted);
+    font-size:1.15rem;
+}
+
+#startStory{
+    padding:18px 44px;
+    border:none;
+    border-radius:999px;
+    background:linear-gradient(135deg,#ff6b81,#ff8fb0);
+    color:#fff;
+    font-size:1rem;
+    cursor:pointer;
+    transition:.35s;
+}
+
+#startStory:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 40px rgba(255,107,129,.4);
+}
+
+.scroll-indicator{
+    position:absolute;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.scroll-indicator span{
+    display:block;
+    width:2px;
+    height:70px;
+    background:#fff;
+    opacity:.4;
+    animation:scrollPulse 2s infinite;
+}
+
+@keyframes scrollPulse{
+    0%{transform:scaleY(.2);opacity:.2;}
+    50%{transform:scaleY(1);}
+    100%{transform:scaleY(.2);opacity:.2;}
+}
+/* =====================================================
+   PREMIUM CINEMATIC WEBSITE - style.css (Part 2)
+   Envelope, Letter, Journey, Gallery, Timeline, Popup
+   Append this below Part 1.
+   ===================================================== */
+
+/* Shared */
+
+.section-header{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-header p{
+    color:#ffd27a;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
+
+.section-header h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:3.2rem;
+}
+
+/* Envelope */
+
+#envelopeScene{
+    text-align:center;
+}
+
+#envelopeWrapper{
+    margin-top:60px;
 }
 
 #envelope{
-
-position:relative;
-
-width:340px;
-
-height:220px;
-
-cursor:pointer;
-
-transition:1s;
-
-transform-style:preserve-3d;
-
+    position:relative;
+    width:360px;
+    height:240px;
+    margin:0 auto;
+    cursor:pointer;
+    transition:.8s;
 }
 
-.front{
-
-position:absolute;
-
-bottom:0;
-
-width:100%;
-height:100%;
-
-background:linear-gradient(145deg,#ffffff,#ececec);
-
-clip-path:polygon(0 0,50% 50%,100% 0,100% 100%,0 100%);
-
-border-radius:0 0 12px 12px;
-
-box-shadow:
-
-0 20px 40px rgba(0,0,0,.45);
-
+#envelope:hover{
+    transform:translateY(-8px) scale(1.02);
 }
 
-.lid{
-
-position:absolute;
-
-top:0;
-
-width:100%;
-height:120px;
-
-background:white;
-
-clip-path:polygon(0 100%,50% 0,100% 100%);
-
-transform-origin:top;
-
-transition:1s;
-
-z-index:5;
-
+.envelope-shadow{
+    position:absolute;
+    inset:auto 20px -20px;
+    height:30px;
+    border-radius:50%;
+    background:rgba(0,0,0,.4);
+    filter:blur(14px);
 }
 
-.paper{
-
-position:absolute;
-
-left:15px;
-
-top:20px;
-
-width:310px;
-
-height:180px;
-
-background:white;
-
-color:#222;
-
-border-radius:10px;
-
-padding:25px;
-
-transition:1.2s;
-
-z-index:1;
-
-box-shadow:0 15px 30px rgba(0,0,0,.2);
-
+.envelope-back,
+.envelope-front{
+    position:absolute;
+    inset:0;
+    border-radius:12px;
+    background:linear-gradient(135deg,#efe0c3,#dbc49d);
 }
 
-.paper h2{
-
-font-family:'Great Vibes',cursive;
-
-font-size:34px;
-
-margin-bottom:20px;
-
-text-align:center;
-
+.envelope-front{
+    clip-path:polygon(0 100%,50% 45%,100% 100%);
 }
 
-.paper p{
-
-text-align:center;
-
-line-height:28px;
-
-font-size:18px;
-
+.envelope-flap{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg,#f6ead1,#d7ba84);
+    clip-path:polygon(0 0,100% 0,50% 58%);
+    transform-origin:top;
+    transition:.8s;
 }
 
-#envelope.open .lid{
-
-transform:rotateX(180deg);
-
+#envelope.open .envelope-flap{
+    transform:rotateX(180deg);
 }
 
-#envelope.open .paper{
+.seal{
+    position:absolute;
+    left:50%;
+    top:46%;
+    transform:translate(-50%,-50%);
+    width:54px;
+    height:54px;
+    border-radius:50%;
+    background:#b91646;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
 
-transform:translateY(-170px);
+.letter-preview{
+    position:absolute;
+    left:20px;
+    right:20px;
+    top:20px;
+    height:180px;
+    background:#fffef8;
+    color:#333;
+    border-radius:10px;
+    padding:24px;
+    transform:translateY(10px);
+    transition:.8s;
+}
+
+#envelope.open .letter-preview{
+    transform:translateY(-90px);
+}
+
+.open-text{
+    margin-top:28px;
+    color:#ddd;
+}
+
+/* Letter */
+
+#letterSection{
+    display:flex;
+    justify-content:center;
+}
+
+#paper{
+    width:min(900px,100%);
+    background:#fffef7;
+    color:#2b2b2b;
+    border-radius:18px;
+    padding:70px;
+    box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+
+.paper-header{
+    text-align:center;
+    margin-bottom:40px;
+    font-weight:600;
+}
+
+.paper-content h2{
+    font-family:"Great Vibes",cursive;
+    font-size:3rem;
+    margin-bottom:30px;
+}
+
+#typingText{
+    min-height:320px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:1.5rem;
+    line-height:2;
+}
+
+.paper-sign{
+    margin-top:60px;
+    text-align:right;
+}
+
+.paper-sign h3{
+    font-family:"Great Vibes",cursive;
+    font-size:2.8rem;
+}
+
+/* Journey */
+
+.journey-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:28px;
+}
+
+.journey-card{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:24px;
+    padding:34px;
+    transition:.35s;
+}
+
+.journey-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 24px 60px rgba(0,0,0,.35);
+}
+
+.journey-number{
+    color:#ffd27a;
+    font-size:2rem;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+/* Memory */
+
+#memoryPhoto{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.memory-image img{
+    width:100%;
+    border-radius:22px;
+}
+
+.memory-text h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:3rem;
+}
+
+/* Gallery */
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.gallery-card{
+    overflow:hidden;
+    border-radius:24px;
+    background:rgba(255,255,255,.08);
+}
+
+.gallery-card img{
+    width:100%;
+    display:block;
+    transition:.6s;
+}
+
+.gallery-card:hover img{
+    transform:scale(1.08);
+}
+
+figcaption{
+    padding:22px;
+}
+
+/* Timeline */
+
+.timeline{
+    border-left:2px solid rgba(255,255,255,.15);
+    margin-left:20px;
+}
+
+.timeline-item{
+    position:relative;
+    margin:45px 0;
+    padding-left:40px;
+}
+
+.circle{
+    position:absolute;
+    left:-11px;
+    top:8px;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:#ff6b81;
+    box-shadow:0 0 20px #ff6b81;
+}
+
+/* Thank you / Ending */
+
+#thankyou,
+#ending{
+    text-align:center;
+}
+
+#thankyou h1,
+#ending h1{
+    font-family:"Cormorant Garamond",serif;
+    font-size:4rem;
+    margin-bottom:25px;
+}
+
+/* Popup */
+
+#secretBtn{
+    position:fixed;
+    left:30px;
+    bottom:30px;
+    border:none;
+    border-radius:999px;
+    padding:16px 28px;
+    cursor:pointer;
+    background:#ff6b81;
+    color:#fff;
+}
+
+#secretPopup{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,.75);
+}
+
+#secretPopup.active{
+    display:flex;
+}
+
+.popup-card{
+    width:min(500px,92%);
+    background:#101827;
+    border-radius:24px;
+    padding:40px;
+    text-align:center;
+}
+
+#closePopup{
+    margin-top:24px;
+    padding:12px 30px;
+    border:none;
+    border-radius:999px;
+}
+
+/* Footer */
+
+footer{
+    padding:60px 20px;
+    text-align:center;
+    color:#bbb;
+}
+
+/* Responsive */
+
+@media (max-width:768px){
+
+#memoryPhoto{
+grid-template-columns:1fr;
+}
+
+#paper{
+padding:36px 24px;
+}
+
+.hero-content h1{
+font-size:3.4rem;
+}
+
+.section-header h2{
+font-size:2.4rem;
+}
+
+#envelope{
+width:300px;
+height:200px;
+}
 
 }
-/* ===========================
-ROSE PETALS
-=========================== */
+/* =====================================================
+   PREMIUM CINEMATIC WEBSITE - style.css (Part 3)
+   Animations, Rose Petals, Utility Classes
+   Append below previous parts.
+   ===================================================== */
+
+/* Fade / Reveal */
+
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:all .9s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Floating animation */
+
+.float{
+    animation:float 6s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-18px);}
+}
+
+/* Glow */
+
+.glow{
+    box-shadow:
+    0 0 25px rgba(255,255,255,.15),
+    0 0 80px rgba(255,107,129,.18);
+}
+
+/* Glass */
+
+.glass{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+/* Rose petals */
+
+#petals{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:-1;
+}
 
 .petal{
-
-position:fixed;
-
-top:-80px;
-
-font-size:24px;
-
-pointer-events:none;
-
-z-index:999;
-
-animation:petalFall linear forwards;
-
-filter:drop-shadow(0 0 10px rgba(255,80,120,.3));
-
+    position:absolute;
+    width:18px;
+    height:18px;
+    background:linear-gradient(135deg,#ff7b9c,#ff4778);
+    border-radius:70% 0 70% 0;
+    opacity:.85;
+    animation-name:fall;
+    animation-timing-function:linear;
+    animation-iteration-count:infinite;
 }
 
-@keyframes petalFall{
+@keyframes fall{
 
 0%{
-
-transform:
-translateY(-100px)
-rotate(0deg);
-
+transform:translateY(-120px) rotate(0deg);
 opacity:0;
-
 }
 
 10%{
-
 opacity:1;
-
 }
 
 100%{
-
-transform:
-
-translateY(120vh)
-translateX(120px)
-rotate(720deg);
-
+transform:translateY(120vh) translateX(120px) rotate(540deg);
 opacity:0;
-
 }
 
 }
 
-/* ===========================
-SHOOTING STAR
-=========================== */
+/* Shooting star */
 
-.shooting{
-
-position:fixed;
-
-width:180px;
-
-height:2px;
-
-background:linear-gradient(to right,#fff,transparent);
-
-pointer-events:none;
-
-transform:rotate(-35deg);
-
-opacity:.8;
-
-z-index:2;
-
-animation:shoot 1.5s linear forwards;
-
+.shooting-star{
+    position:absolute;
+    width:180px;
+    height:2px;
+    background:linear-gradient(to right,#fff,transparent);
+    transform:rotate(-35deg);
+    opacity:.8;
+    animation:shoot 3s linear infinite;
 }
 
 @keyframes shoot{
 
 0%{
+transform:translate(-300px,-100px) rotate(-35deg);
+opacity:0;
+}
 
+15%{
 opacity:1;
-
 }
 
 100%{
-
-transform:
-translateX(500px)
-translateY(300px)
-rotate(-35deg);
-
+transform:translate(1600px,700px) rotate(-35deg);
 opacity:0;
-
 }
 
 }
 
-/* ===========================
-CURSOR GLOW
-=========================== */
+/* Scroll bar */
 
-.cursorGlow{
-
-position:fixed;
-
-width:12px;
-
-height:12px;
-
-border-radius:50%;
-
-background:#ff6b9a;
-
-box-shadow:
-
-0 0 15px #ff6b9a,
-
-0 0 35px #ff6b9a;
-
-pointer-events:none;
-
-z-index:99999;
-
-animation:cursorFade .5s linear forwards;
-
+::-webkit-scrollbar{
+    width:10px;
 }
 
-@keyframes cursorFade{
+::-webkit-scrollbar-track{
+    background:#070b16;
+}
 
-100%{
+::-webkit-scrollbar-thumb{
+    background:#ff6b81;
+    border-radius:999px;
+}
 
-opacity:0;
+/* Selection */
 
-transform:scale(2);
+::selection{
+    background:#ff6b81;
+    color:#fff;
+}
 
+/* Smooth image hover */
+
+.gallery-card,
+.journey-card,
+.popup-card,
+#paper,
+.memory-image img{
+    transition:all .4s ease;
+}
+
+.memory-image img:hover{
+    transform:scale(1.03);
+}
+
+/* Footer animation */
+
+footer small{
+    display:block;
+    margin-top:10px;
+    opacity:.75;
+}
+
+/* Utility spacing */
+
+.mt-1{margin-top:10px;}
+.mt-2{margin-top:20px;}
+.mt-3{margin-top:30px;}
+.mt-4{margin-top:40px;}
+.mt-5{margin-top:50px;}
+
+.text-center{
+    text-align:center;
+}
+
+.hidden{
+    display:none;
+}
+
+.visible{
+    display:block;
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce){
+
+*{
+animation:none !important;
+transition:none !important;
+scroll-behavior:auto !important;
 }
 
 }
