@@ -3,915 +3,853 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A Letter I Should Have Written Sooner</title>
+    <title>A Letter I Should Have Written Sooner</title>
 
-<meta
-name="theme-color"
-content="#050816">
+    <meta name="description" content="A cinematic apology website for Nikita">
 
-<meta
-name="description"
-content="A cinematic apology website for Nikita">
+    <meta name="theme-color" content="#050816">
 
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
-rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
-<link
-rel="stylesheet"
-href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<!-- ====================================== -->
-<!-- LOADER -->
-<!-- ====================================== -->
+    <!-- ========================================= -->
+    <!-- LOADER -->
+    <!-- ========================================= -->
 
-<div id="loader">
+    <div id="loader">
 
-<div class="loader-heart">
+        <div class="loader-heart">
+            ❤️
+        </div>
 
-❤️
+        <h1>Loading Memories...</h1>
 
-</div>
+        <p>Please wait...</p>
 
-<h1>
+    </div>
 
-Loading Memories...
+    <!-- ========================================= -->
+    <!-- CINEMATIC BACKGROUND -->
+    <!-- ========================================= -->
 
-</h1>
+    <div id="galaxy"></div>
 
-<p>
+    <div id="stars"></div>
 
-Please wait...
+    <div id="aurora"></div>
 
-</p>
+    <div id="moon"></div>
 
-</div>
+    <div id="particles"></div>
 
-<!-- ====================================== -->
-<!-- BACKGROUND -->
-<!-- ====================================== -->
+    <!-- Rose petals will be added through JavaScript -->
 
-<div id="galaxy"></div>
+    <div id="petals"></div>
 
-<div id="stars"></div>
+    <!-- ========================================= -->
+    <!-- MUSIC -->
+    <!-- ========================================= -->
 
-<div id="aurora"></div>
+    <button id="musicBtn" aria-label="Toggle Background Music">
 
-<div id="moon"></div>
+        <span>🎵</span>
 
-<div id="particles"></div>
+    </button>
 
-<!-- ====================================== -->
-<!-- MUSIC -->
-<!-- ====================================== -->
+    <audio id="bgMusic" loop>
 
-<button id="musicBtn">
+        <source src="assets/music/piano.mp3" type="audio/mpeg">
 
-🎵
+    </audio>
 
-</button>
+    <!-- ========================================= -->
+    <!-- HERO SECTION -->
+    <!-- ========================================= -->
 
-<audio
-id="bgMusic"
-loop>
+    <section id="hero">
 
-<source
-src="assets/music/piano.mp3"
-type="audio/mpeg">
+        <div class="hero-content">
 
-</audio>
+            <p class="eyebrow">
+                For Nikita ❤️
+            </p>
 
-<!-- ====================================== -->
-<!-- HERO -->
-<!-- ====================================== -->
+            <h1>
 
-<section id="hero">
-  <!-- ======================================
-     ENVELOPE SCENE
-====================================== -->
+                A Letter
+
+                <br>
+
+                I Should Have
+
+                <br>
+
+                Written Sooner
+
+            </h1>
+
+            <p class="hero-description">
+
+                Some feelings deserved
+
+                more than a text message.
+
+                <br><br>
+
+                So I built
+
+                this little place
+
+                from my heart.
+
+            </p>
+
+            <button id="startStory">
+
+                Open My Heart
+
+            </button>
+
+        </div>
+
+        <div class="scroll-indicator">
+
+            <span></span>
+
+        </div>
+
+    </section>
+    <!-- ========================================= -->
+<!-- ENVELOPE SCENE -->
+<!-- ========================================= -->
 
 <section id="envelopeScene">
 
-<div class="scene-title">
+    <div class="scene-title">
 
-<p>The Letter</p>
+        <p>The Letter</p>
 
-<h2>
+        <h2>
 
-Some words were never said properly.
+            Some words were never
+            spoken the way
+            they should have been.
 
-</h2>
+        </h2>
 
-</div>
+    </div>
 
-<div id="envelopeWrapper">
+    <div id="envelopeWrapper">
 
-<div id="envelope">
+        <div id="envelope">
 
-<div class="envelope-shadow"></div>
+            <div class="envelope-shadow"></div>
 
-<div class="envelope-back"></div>
+            <div class="envelope-back"></div>
 
-<div class="letter-preview">
+            <div class="letter-preview">
 
-<div class="letter-top">
+                <div class="letter-top">
 
-<p>To</p>
+                    <p>To</p>
 
-<h3>Nikita ❤️</h3>
+                    <h3>Nikita ❤️</h3>
 
-</div>
+                </div>
 
-<div class="letter-middle">
+                <div class="letter-middle">
 
-<p>
+                    <p>
 
-This isn't a request.
+                        This isn't a request.
 
-This isn't an expectation.
+                        <br><br>
 
-It's simply
+                        This isn't an expectation.
 
-a letter
+                        <br><br>
 
-from my heart.
+                        It's simply
 
-</p>
+                        a letter
 
-</div>
+                        from my heart.
 
-</div>
+                    </p>
 
-<div class="envelope-front"></div>
+                </div>
 
-<div class="envelope-flap">
+            </div>
 
-<div class="seal">
+            <div class="envelope-front"></div>
 
-❤️
+            <div class="envelope-flap">
 
-</div>
+                <div class="seal">
 
-</div>
+                    ❤️
 
-</div>
+                </div>
 
-<p class="open-text">
+            </div>
 
-Click the envelope
+        </div>
 
-to open the letter
+        <p class="open-text">
 
-</p>
+            Click the envelope
 
-</div>
+            <br>
+
+            to open the letter
+
+        </p>
+
+    </div>
 
 </section>
 
-<!-- ======================================
-     LETTER SECTION
-====================================== -->
+<!-- ========================================= -->
+<!-- LETTER -->
+<!-- ========================================= -->
 
 <section id="letterSection">
 
-<div class="paper-shadow"></div>
+    <div class="paper-shadow"></div>
 
-<div id="paper">
+    <div id="paper">
 
-<div class="paper-header">
+        <div class="paper-header">
 
-<p>
+            <p>
 
-A Letter I Should Have Written Sooner
+                A Letter I Should Have Written Sooner
 
-</p>
+            </p>
 
-</div>
+        </div>
 
-<div class="paper-content">
+        <div class="paper-content">
 
-<h2>
+            <h2>
 
-Dear Nikita,
+                Dear Nikita,
 
-</h2>
+            </h2>
 
-<div id="typingText">
+            <div id="typingText"></div>
 
-</div>
+            <div class="paper-sign">
 
-<div class="paper-sign">
+                <p>
 
-<p>
+                    With Love,
 
-With Love,
+                </p>
 
-</p>
+                <h3>
 
-<h3>
+                    Saurabh ❤️
 
-Saurabh ❤️
+                </h3>
 
-</h3>
+            </div>
 
-</div>
+        </div>
 
-</div>
-
-</div>
+    </div>
 
 </section>
-
-<div class="hero-content">
-
-<p class="eyebrow">
-
-For Nikita ❤️
-
-</p>
-
-<h1>
-
-A Letter
-
-I Should Have
-
-Written Sooner
-
-</h1>
-
-<p class="hero-description">
-
-Some feelings deserved
-
-more than a simple message.
-
-So I built this place
-
-from my heart.
-
-</p>
-
-<button id="startStory">
-
-Open My Heart
-
-</button>
-
-</div>
-
-<div class="scroll-indicator">
-
-<span></span>
-
-</div>
-
-</section>
-<!-- ======================================
-     OUR JOURNEY
-====================================== -->
+<!-- ========================================= -->
+<!-- OUR JOURNEY -->
+<!-- ========================================= -->
 
 <section id="journey">
 
-<div class="section-header">
+    <div class="section-header">
 
-<p>
+        <p>
+            Every memory still has
+            a place in my heart.
+        </p>
 
-Every memory still has a place in my heart.
+        <h2>
+            Our Journey
+        </h2>
 
-</p>
+    </div>
 
-<h2>
+    <div class="journey-container">
 
-Our Journey
+        <!-- Card 1 -->
 
-</h2>
+        <article class="journey-card">
 
-</div>
+            <div class="journey-number">
+                01
+            </div>
 
-<div class="journey-container">
+            <div class="journey-content">
 
-<!-- CARD 1 -->
+                <h3>15 March ❤️</h3>
 
-<div class="journey-card">
+                <p>
 
-<div class="journey-number">
+                    The day everything quietly began.
 
-01
+                    <br><br>
 
-</div>
+                    I never imagined
+                    that one ordinary day
+                    would become
+                    one of the most meaningful
+                    memories of my life.
 
-<div class="journey-content">
+                </p>
 
-<h3>
+            </div>
 
-15 March ❤️
+        </article>
 
-</h3>
+        <!-- Card 2 -->
 
-<p>
+        <article class="journey-card">
 
-The day our story quietly began.
+            <div class="journey-number">
+                02
+            </div>
 
-I had no idea
+            <div class="journey-content">
 
-that one ordinary day
+                <h3>Our First Movie 🎬</h3>
 
-would become
+                <p>
 
-one of the most meaningful
+                    It was never just about
+                    watching a movie.
 
-days of my life.
+                    <br><br>
 
-</p>
+                    It was about sitting beside you,
+                    laughing together,
+                    and realizing
+                    how peaceful happiness could feel.
 
-</div>
+                </p>
 
-</div>
+            </div>
 
-<!-- CARD 2 -->
+        </article>
 
-<div class="journey-card">
+        <!-- Card 3 -->
 
-<div class="journey-number">
+        <article class="journey-card">
 
-02
+            <div class="journey-number">
+                03
+            </div>
 
-</div>
+            <div class="journey-content">
 
-<div class="journey-content">
+                <h3>Late Night Calls 📞</h3>
 
-<h3>
+                <p>
 
-Our First Movie 🎬
+                    Hours somehow turned into minutes.
 
-</h3>
+                    <br><br>
 
-<p>
+                    No matter how long we talked,
+                    it never felt enough.
 
-It wasn't just about the movie.
+                    Those conversations
+                    became the best part
+                    of my day.
 
-It was about sitting beside you,
+                </p>
 
-sharing smiles,
+            </div>
 
-and making a simple evening
+        </article>
 
-feel unforgettable.
+        <!-- Card 4 -->
 
-</p>
+        <article class="journey-card">
 
-</div>
+            <div class="journey-number">
+                04
+            </div>
 
-</div>
+            <div class="journey-content">
 
-<!-- CARD 3 -->
+                <h3>Banaras 🛕</h3>
 
-<div class="journey-card">
+                <p>
 
-<div class="journey-number">
+                    Some places remain beautiful
+                    because of the memories
+                    attached to them.
 
-03
+                    <br><br>
 
-</div>
+                    Banaras
+                    will always remind me
+                    of us.
 
-<div class="journey-content">
+                </p>
 
-<h3>
+            </div>
 
-Late Night Calls 📞
+        </article>
 
-</h3>
-
-<p>
-
-Hours turned into minutes.
-
-No matter how long we talked,
-
-it somehow never felt enough.
-
-Those conversations
-
-became part of my everyday happiness.
-
-</p>
-
-</div>
-
-</div>
-
-<!-- CARD 4 -->
-
-<div class="journey-card">
-
-<div class="journey-number">
-
-04
-
-</div>
-
-<div class="journey-content">
-
-<h3>
-
-Banaras 🛕
-
-</h3>
-
-<p>
-
-Some places stay beautiful
-
-because of the memories
-
-attached to them.
-
-Banaras
-
-will always remind me
-
-of us.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
-<!-- ======================================
-     PHOTO MEMORY
-====================================== -->
+<!-- ========================================= -->
+<!-- FEATURE MEMORY -->
+<!-- ========================================= -->
 
 <section id="memoryPhoto">
 
-<div class="memory-image">
+    <div class="memory-image">
 
-<img
+        <img
+            src="assets/images/hand.jpg"
+            alt="Holding Hands">
 
-src="assets/images/hand.jpg"
+    </div>
 
-alt="Holding Hands"
+    <div class="memory-text">
 
->
+        <p>
 
-</div>
+            One Photograph.
 
-<div class="memory-text">
+            Thousands of Emotions.
 
-<p>
+        </p>
 
-One Photograph.
+        <h2>
 
-Thousands of Emotions.
+            Sometimes...
 
-</p>
+            <br><br>
 
-<h2>
+            Holding your hand
+            felt like
+            holding
+            the safest place
+            in the world.
 
-Sometimes...
+        </h2>
 
-holding your hand
-
-felt like
-
-holding
-
-the safest place
-
-in the world.
-
-</h2>
-
-</div>
+    </div>
 
 </section>
-
-<!-- ======================================
-     GALLERY
-====================================== -->
+<!-- ========================================= -->
+<!-- MEMORIES GALLERY -->
+<!-- ========================================= -->
 
 <section id="gallery">
 
-<div class="section-header">
+    <div class="section-header">
 
-<p>
+        <p>
+            A few moments
+            I'll always carry with me.
+        </p>
 
-A few moments
+        <h2>
+            Memories
+        </h2>
 
-I'll always remember.
+    </div>
 
-</p>
+    <div class="gallery-grid">
 
-<h2>
+        <figure class="gallery-card">
 
-Memories
+            <img
+                src="assets/images/movie.jpg"
+                alt="Our Movie Night">
 
-</h2>
+            <figcaption>
 
-</div>
+                <h3>Movie Night 🎬</h3>
 
-<div class="gallery-grid">
+                <p>
+                    One ordinary evening became
+                    one of my favourite memories.
+                </p>
 
-<div class="gallery-card">
+            </figcaption>
 
-<img
+        </figure>
 
-src="assets/images/movie.jpg"
+        <figure class="gallery-card">
 
-alt="Movie Memory"
+            <img
+                src="assets/images/banaras.jpg"
+                alt="Banaras">
 
->
+            <figcaption>
 
-</div>
+                <h3>Banaras 🛕</h3>
 
-<div class="gallery-card">
+                <p>
+                    Some cities are remembered
+                    because of the people
+                    you experienced them with.
+                </p>
 
-<img
+            </figcaption>
 
-src="assets/images/banaras.jpg"
+        </figure>
 
-alt="Banaras"
+        <figure class="gallery-card">
 
->
+            <img
+                src="assets/images/nikita.jpg"
+                alt="A Beautiful Memory">
 
-</div>
+            <figcaption>
 
-<div class="gallery-card">
+                <h3>You ❤️</h3>
 
-<img
+                <p>
+                    Every photograph
+                    tells a story
+                    my heart still remembers.
+                </p>
 
-src="assets/images/nikita.jpg"
+            </figcaption>
 
-alt="Memory"
+        </figure>
 
->
-
-</div>
-
-</div>
+    </div>
 
 </section>
-<!-- ======================================================
-QUOTE SECTION
-====================================================== -->
+
+<!-- ========================================= -->
+<!-- CINEMATIC QUOTE -->
+<!-- ========================================= -->
 
 <section id="quoteSection">
 
-<div class="quote-container">
+    <div class="quote-container">
 
-<span class="quote-icon">❝</span>
+        <span class="quote-icon">❝</span>
 
-<h2>
+        <h2>
 
-I wasn't trying
-to win.
+            I wasn't trying
+            to win.
 
-I was trying
-to save
-what meant
-everything
-to me.
+            <br><br>
 
-</h2>
+            I was trying
+            to save
+            what meant
+            everything
+            to me.
 
-<p>
+        </h2>
 
-Looking back...
+        <p>
 
-I realised
+            Looking back...
 
-love was never about
-being right.
+            <br><br>
 
-It was about
-making the other person
-feel heard,
+            I realised
+            love was never about
+            being right.
 
-safe,
+            <br><br>
 
-and loved.
+            It was about
+            making the other person
+            feel heard,
+            safe,
+            understood,
+            and loved.
 
-</p>
+        </p>
 
-</div>
+    </div>
 
 </section>
-
-<!-- ======================================================
-TIMELINE
-====================================================== -->
+<!-- ========================================= -->
+<!-- TIMELINE -->
+<!-- ========================================= -->
 
 <section id="timeline">
 
-<div class="section-header">
+    <div class="section-header">
 
-<p>
+        <p>
+            Every chapter mattered.
+        </p>
 
-Our Story
+        <h2>
+            Our Story
+        </h2>
 
-</p>
+    </div>
 
-<h2>
+    <div class="timeline">
 
-Every Chapter Matters
+        <div class="timeline-item">
 
-</h2>
+            <div class="circle"></div>
 
-</div>
+            <div class="content">
 
-<div class="timeline">
+                <h3>15 March ❤️</h3>
 
-<div class="timeline-item">
+                <p>
+                    The day our story quietly began.
+                </p>
 
-<div class="circle"></div>
+            </div>
 
-<div class="content">
+        </div>
 
-<h3>
+        <div class="timeline-item">
 
-15 March ❤️
+            <div class="circle"></div>
 
-</h3>
+            <div class="content">
 
-<p>
+                <h3>Movie Night 🎬</h3>
 
-Where everything started.
+                <p>
+                    One simple evening became
+                    a memory I'll always treasure.
+                </p>
 
-</p>
+            </div>
 
-</div>
+        </div>
 
-</div>
+        <div class="timeline-item">
 
-<div class="timeline-item">
+            <div class="circle"></div>
 
-<div class="circle"></div>
+            <div class="content">
 
-<div class="content">
+                <h3>Late Night Calls 📞</h3>
 
-<h3>
+                <p>
+                    Hours disappeared,
+                    yet it always felt
+                    like there was more to say.
+                </p>
 
-Movie Night 🎬
+            </div>
 
-</h3>
+        </div>
 
-<p>
+        <div class="timeline-item">
 
-A simple evening
+            <div class="circle"></div>
 
-became
+            <div class="content">
 
-one of my favourite memories.
+                <h3>Banaras 🛕</h3>
 
-</p>
+                <p>
+                    Some places never leave us
+                    because they hold
+                    the people we loved.
+                </p>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-<div class="timeline-item">
+        <div class="timeline-item">
 
-<div class="circle"></div>
+            <div class="circle"></div>
 
-<div class="content">
+            <div class="content">
 
-<h3>
+                <h3>Today</h3>
 
-Late Night Calls 📞
+                <p>
+                    This website.
+                    This letter.
+                    This apology.
+                </p>
 
-</h3>
+            </div>
 
-<p>
+        </div>
 
-Hours disappeared
-
-while talking to you.
-
-</p>
-
-</div>
-
-</div>
-
-<div class="timeline-item">
-
-<div class="circle"></div>
-
-<div class="content">
-
-<h3>
-
-Banaras 🛕
-
-</h3>
-
-<p>
-
-Some places
-
-will always remind me
-
-of us.
-
-</p>
-
-</div>
-
-</div>
-
-<div class="timeline-item">
-
-<div class="circle"></div>
-
-<div class="content">
-
-<h3>
-
-Today
-
-</h3>
-
-<p>
-
-This letter.
-
-This apology.
-
-This website.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
-<!-- ======================================================
-THANK YOU
-====================================================== -->
+<!-- ========================================= -->
+<!-- THANK YOU -->
+<!-- ========================================= -->
 
 <section id="thankyou">
 
-<h1>
+    <h1>
+        Thank You,
+        Nikita ❤️
+    </h1>
 
-Thank You
+    <p>
 
-Nikita ❤️
+        Thank you
+        for every smile.
 
-</h1>
+        <br><br>
 
-<p>
+        Thank you
+        for every laugh.
 
-For every smile.
+        <br><br>
 
-For every laugh.
+        Thank you
+        for every lesson.
 
-For every memory.
+        <br><br>
 
-For every lesson.
+        Thank you
+        for every beautiful memory.
 
-For being
-
-such an important
-
-part of my life.
-
-</p>
+    </p>
 
 </section>
 
-<!-- ======================================================
-ENDING
-====================================================== -->
+<!-- ========================================= -->
+<!-- ENDING -->
+<!-- ========================================= -->
 
 <section id="ending">
 
-<h1>
+    <h1>
 
-Take Care.
+        Take Care.
 
-</h1>
+    </h1>
 
-<p>
+    <p>
 
-This website
+        This website
+        was never created
+        to change your decision.
 
-was never made
+        <br><br>
 
-to change your decision.
+        It was simply built
+        because some apologies
+        deserve more
+        than a text message.
 
-It was only built
+    </p>
 
-because
+    <h2>
 
-some apologies
+        With Love,
 
-deserve
+        <br>
 
-more than
+        Saurabh ❤️
 
-a text message.
-
-</p>
-
-<h2>
-
-With Love,
-
-Saurabh ❤️
-
-</h2>
+    </h2>
 
 </section>
 
-<!-- ======================================================
-SECRET BUTTON
-====================================================== -->
+<!-- ========================================= -->
+<!-- SECRET MESSAGE -->
+<!-- ========================================= -->
 
 <button id="secretBtn">
 
-One Last Thing...
+    One Last Thing...
 
 </button>
 
 <div id="secretPopup">
 
-<div class="popup-card">
+    <div class="popup-card">
 
-<h2>
+        <h2>
 
-One Last Thing...
+            One Last Thing...
 
-</h2>
+        </h2>
 
-<p>
+        <p>
 
-If this is
+            If this is
+            where our story ends...
 
-where our story ends,
+            <br><br>
 
-I genuinely hope
+            I genuinely hope
 
-life gives you
+            life gives you
+            every happiness
+            you deserve.
 
-everything
+            <br><br>
 
-you deserve.
+            Thank you
+            for being
+            such an important
+            part of my life.
 
-Thank you
+            ❤️
 
-for every memory.
+        </p>
 
-❤️
+        <button id="closePopup">
 
-</p>
+            Close
 
-<button id="closePopup">
+        </button>
 
-Close
-
-</button>
+    </div>
 
 </div>
 
-</div>
-
-<!-- ======================================================
-FOOTER
-====================================================== -->
+<!-- ========================================= -->
+<!-- FOOTER -->
+<!-- ========================================= -->
 
 <footer>
 
-<p>
+    <p>
 
-Made with ❤️ by Saurabh
+        Built with ❤️, gratitude,
+        and hope.
 
-</p>
+    </p>
+
+    <small>
+
+        — Saurabh
+
+    </small>
 
 </footer>
 
